@@ -7,3 +7,4 @@
 - Nathan Wang
 
 Nicky has figured out how to resolve merge conflicts! Congratulations Nicky!
+Rob has also figured it out. 
