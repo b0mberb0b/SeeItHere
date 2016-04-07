@@ -1,8 +1,9 @@
-Group: Rainier Reindeers
+# Group: Rainier Reindeers
 
-Noah Reyes
-Rob Shelton
-Nicky Smit
-Nathan Wang
+## Members:
+- Noah Reyes
+- Rob Shelton
+- Nicky Smit
+- Nathan Wang
 
 Nicky has figured out how to resolve merge conflicts! Congratulations Nicky!
