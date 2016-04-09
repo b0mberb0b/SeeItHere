@@ -19,10 +19,6 @@ Pretty much going back to the beginning of the Loc8r book here, so that we can s
 - Don't forget to comment all your code so others know what's going on!
 - Check and make sure you are running node version v4.2.1... I'm not sure how it works exactly but things will go wrong if you aren't. I wasn't somehow, had to reinstall Express and nodemon
 
-## Things Needing Work/Change (please add to this)
-- Amelia is referenced as a stylesheet in app_server/views/layout.jade, but this definitely needs changing
-
-
 ## Webpage Layout
 - home page, has big central search bar, login and sign up is emphasized (for both theaters and theater-goers), if signed in shows suggested plays, otherwise just plays happening near the client (if know location)
 at 'localhost:3000'
