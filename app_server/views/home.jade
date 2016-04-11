@@ -1,5 +1,6 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}, an app by Rainier Reindeer
+  h1.center= pageHeader.title
+    p
+    small.center #{pageHeader.strapline}

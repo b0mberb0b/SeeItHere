@@ -1,5 +1,24 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}, an app by Rainier Reindeer
+  #banner.page-header
+    .row
+      .col-lg-6
+        h1 SeeItHere Theater
+          p.small Find the production you want to See
+  .row
+    .col-xs-12.col-sm-8
+      .row.list-group
+        each location in locations
+          .col-xs.12.list-group-item
+            h4
+              a(href="/theater")= location.name
+              small &nbsp;
+              span.badge.pull-right.badge-default= location.distance
+            p.address= location.address
+            p
+              each showTime in location.showTimes
+                span.label.label-warning= showTime
+                | &nbsp;
+    .col-xs-12.col-sm-4
+      p.lead I'm not sure if this sidebar is necessary. But I'll fill it out just to see how it looks like just in case

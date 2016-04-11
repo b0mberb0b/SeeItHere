@@ -16,11 +16,6 @@ body {
   background-color: #f5f5f5;
 }
 
-
-/* Custom page CSS
--------------------------------------------------- */
-/* Not required for template or sticky footer method. */
-
 body > .container {
   padding: 60px 15px 0;
 }
@@ -36,3 +31,10 @@ body > .container {
 code {
   font-size: 80%;
 }
+.review {padding-bottom: 5px;}
+.panel-body.reviewcontainer {padding-top: 0;}
+.review-header {margin-bottom: 10px;}
+.reviewAuthor {margin: 0 5px;}
+.reviewTimestamp {color: #ccc;}
+
+.center {text-align: center}
