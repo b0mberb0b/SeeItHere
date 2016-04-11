@@ -1,58 +1,44 @@
 extends layout
 
+include _includes/sharedHTMLfunctions
+
 block content
   .row.page-header
-    .col-lg-12
-      h1 Theatre House
+    .col-lg-9
+      h1= pageHeader.title
+      h3= pageHeader.strapline
+    .col-lg-3
+      a.btn.btn-default.pull-right(href="/results") Back to Search
   .row
     .col-xs-12.col-md-9
       .row
         .col-xs-12.col-sm-6
           p.rating
-            span.glyphicon.glyphicon-star
-            span.glyphicon.glyphicon-star
-            span.glyphicon.glyphicon-star
-            span.glyphicon.glyphicon-star-empty
-            span.glyphicon.glyphicon-star-empty
-          p 125 Booker Road, Tahoca, BA, 98504
+            +outputRating(theater.rating)
+          p= theater.address
           .panel.panel-primary
             .panel-heading
               h2.panel-title Theater Description
             .panel-body
-              p A lovely little theater, nestled in the Nordic-ruled village of Tahoca, Bashington. Come see quaint little plays and plenty of spiky breast plated women singing operas.
+              p= theater.description
           .panel.panel-primary
             .panel-heading
+              a.btn.btn-default.pull-right(href="/theater/review") Write Review
               h2.panel-title Theater Reviews
             .panel-body.review-container
-              .row
-                .review
-                  .well.well-sm.review-header
-                    span.rating
-                      span.glyphicon.glyphicon-star
-                      span.glyphicon.glyphicon-star-empty
-                      span.glyphicon.glyphicon-star-empty
-                      span.glyphicon.glyphicon-star-empty
-                      span.glyphicon.glyphicon-star-empty
-                    span.reviewAuthor Louis Louis
-                    small.reviewTimestamp April 5 2016
-                  .col-xs-12
-                    p I was not amused, everything sucked so badly.
-              .row
-                .review
-                  .well.well-sm.review-header
-                    span.rating
-                      span.glyphicon.glyphicon-star
-                      span.glyphicon.glyphicon-star-empty
-                      span.glyphicon.glyphicon-star-empty
-                      span.glyphicon.glyphicon-star-empty
-                      span.glyphicon.glyphicon-star-empty
-                    span.reviewAuthor Louis Louis
-                    small.reviewTimestamp April 5 2016
-                  .col-xs-12
-                    p If it were not for the delicious swedish meatballs, I might have left
+              each review in theater.reviews
+                .row
+                  .review
+                    .well.well-sm.review-header
+                      span.rating
+                        +outputRating(review.rating)
+                      span.reviewAuthor #{review.author}
+                      small.reviewTimestamp #{review.timestamp}
+                    .col-xs-12
+                      p !{(review.text).replace(/\n/g, '<br/>')}
           .panel.panel-primary
             .panel-heading
-              h2.panel-title.a(href="http://edmondsdriftwoodplayers.org/") Theater Website
+              a.panel-title(href= theater.website) Theater Website
         .col-xs-12.col-sm-6.location-map
           .panel.panel-primary
             .panel-heading
@@ -64,3 +50,11 @@ block content
               h2.panel-title Season Calendar
             .panel-body
               img.img-responsive.img-rounded(src='http://www.tondering.dk/claus/cal/calpic/calendar_icon.png')
+    .col-xs-12.col-md-3
+      panel.panel-primary
+        .panel-heading
+          h2.panel-title Current Season
+        .panel-body
+          each play in theater.plays
+            a(href="/theater/play") #{play.name}
+            img.img-responsive.img-rounded(src= play.poster)

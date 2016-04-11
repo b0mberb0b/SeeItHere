@@ -4,6 +4,7 @@ var adminController = require('../controllers/adminController')
 var homeController = require('../controllers/homeController')
 var othersController = require('../controllers/othersController')
 var playController = require('../controllers/playController')
+var reviewController = require('../controllers/reviewController')
 var resultsController = require('../controllers/resultsController')
 var theaterController = require('../controllers/theaterController')
 var userController = require('../controllers/userController')
@@ -16,6 +17,8 @@ router.get('/results', resultsController.show);
 router.get('/theater', theaterController.show);
 /* GET specific production page by calling method from playController.js*/
 router.get('/theater/play', playController.show);
+/* GET specific theater review page by calling method from reviewController.js*/
+router.get('/theater/review', reviewController.show);
 
 
 /* logged-in user-related pages */

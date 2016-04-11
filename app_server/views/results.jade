@@ -7,18 +7,32 @@ block content
         h1 SeeItHere Theater
           p.small Find the production you want to See
   .row
-    .col-xs-12.col-sm-8
-      .row.list-group
-        each location in locations
-          .col-xs.12.list-group-item
-            h4
-              a(href="/theater")= location.name
-              small &nbsp;
-              span.badge.pull-right.badge-default= location.distance
-            p.address= location.address
-            p
-              each showTime in location.showTimes
-                span.label.label-warning= showTime
-                | &nbsp;
     .col-xs-12.col-sm-4
-      p.lead I'm not sure if this sidebar is necessary. But I'll fill it out just to see how it looks like just in case
+      .panel.panel-primary
+        .panel-heading
+          h2.panel-title Search Results Near You
+        .panel-body
+          .row.list-group
+            each location in locations
+              .col-xs.12.list-group-item
+                h4
+                  a(href="/theater")= location.name
+                  small &nbsp;
+                  span.badge.pull-right.badge-default= location.distance
+                p.address= location.address
+                p
+                  each showTime in location.showTimes
+                    span.label.label-warning= showTime
+                    | &nbsp;
+    .col-xs-12.col-sm-6
+      img.img-responsive.img-rounded(src='http://maps.googleapis.com/maps/api/staticmap?center=51.455041,-0.9690884&zoom=17&size=400x350&sensor=false&markers=51.455041,-0.9690884&scale=2')
+    .col-xs-12.col-sm-2
+      .panel.panel-primary
+        .panel-heading
+          h2.panel-title Limit Results
+        .panel-body
+          .row
+            .col-xs-12
+              p Limit Ticket Price
+              p Limit Date
+              p Limit Distance
