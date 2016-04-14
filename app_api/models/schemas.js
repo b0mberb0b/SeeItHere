@@ -32,4 +32,5 @@ var theaterSchema = new mongoose.Schema({
   plays: [playSchema]
 });
 
-mongoose.model('theater', theaterSchema);
+//exports this schema under the name "Theater", used at top of all Controller files
+mongoose.model('Theater', theaterSchema);

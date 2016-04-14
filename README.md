@@ -27,6 +27,5 @@ Pretty much going back to the beginning of the Loc8r book here, so that we can s
 - Check and make sure you are running node version v4.2.1... I'm not sure how it works exactly but things will go wrong if you aren't. I wasn't somehow, had to reinstall Express and nodemon
 
 ## Random Tricky things
-- in Review page, date field dependent on what play they saw, don't know how to work that
 - Don't know how to center things very well, like the temporary Results button at home page
 - I can't get \n to start a new line in othersControllers.js, and I have no idea why
