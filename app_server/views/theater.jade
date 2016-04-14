@@ -23,21 +23,6 @@ block content
               p= theater.description
           .panel.panel-primary
             .panel-heading
-              a.btn.btn-default.pull-right(href="/theater/review") Write Review
-              h2.panel-title Theater Reviews
-            .panel-body.review-container
-              each review in theater.reviews
-                .row
-                  .review
-                    .well.well-sm.review-header
-                      span.rating
-                        +outputRating(review.rating)
-                      span.reviewAuthor #{review.author}
-                      small.reviewTimestamp #{review.timestamp}
-                    .col-xs-12
-                      p !{(review.text).replace(/\n/g, '<br/>')}
-          .panel.panel-primary
-            .panel-heading
               a.panel-title(href= theater.website) Theater Website
         .col-xs-12.col-sm-6.location-map
           .panel.panel-primary

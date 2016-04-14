@@ -24,16 +24,11 @@ block content
                 option 1
         .form-group
           label-group
-            label.col-xs-10.col-sm-2.control-label(for="play") Play Attended
-            .col-xs-12.col-sm-4
-              select.form-control.input-sm(name="play")
-                each production in plays
-                  option #{production.name}
             label.col-xs-10.col-sm-2.control-label(for="date") Date Attended
             .col-xs-12.col-sm-4
               select.form-control.input-sm(name="date")
-                each production in plays
-                  option #{production.dates}
+                each date in dates
+                  option #{date}
         .form-group
           label.col-sm-2.control-label(for="review") Review
           .col-sm-10

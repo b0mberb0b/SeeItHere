@@ -10,6 +10,13 @@ https://git.heroku.com/afternoon-taiga-87750.git
 created new group account, make sure to login and do setup on each computer, email is nsmit@pugetsound.edu, password is R3ind33r$, here's a link on how to setup, if ya need
 https://devcenter.heroku.com/articles/getting-started-with-nodejs#set-up
 
+To update the database on heroku follow pages 154-155 in book. Here's login Info
+- username = heroku_07nmh2w4
+- password = 81icn2plkq7fljaovrt0bpabct
+- server address = ds023520.mlab.com
+- port = 23520
+- database name = heroku_07nmh2w4
+
 ## Using Express Folder Layout
 Pretty much going back to the beginning of the Loc8r book here, so that we can start of with a simple website that works. Has bootstrap installed in public folder.
 

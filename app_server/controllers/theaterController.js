@@ -12,7 +12,6 @@ module.exports.show = function(req, res) {
       description: 'A lovely little theater, nestled in the Nordic-ruled village of Tahoca, Bashington. Come see quaint little plays and plenty of spiky breast plated women singing operas.',
       rating: 1,
       coordinates: {lat: 51.455041, lng: -0.9690884},
-      productions: ['Joseph and His Amazing Technicolor Dreamcoat', 'Pippin', 'A Streetcar Named Desire', 'One Flew Over the Cuckoos Nest'],
       website: 'http://edmondsdriftwoodplayers.org/',
       plays: [{
         name: 'Joseph and The Amazing Technicolored Dreamcoat',
@@ -23,17 +22,6 @@ module.exports.show = function(req, res) {
       }, {
         name: 'Waiting for Godot',
         poster: '../images/godot.jpg'
-      }],
-      reviews: [{
-        author: 'Louis Louise',
-        rating: 1,
-        timestamp: 'April 8 2016',
-        text: 'I was not amused, everything sucked so badly.',
-      }, {
-        author: 'Agent Smith',
-        rating: 2,
-        timestamp: 'April 5 2016',
-        text: 'If it were not for the delicious swedish meatballs, I might have left',
       }]
     }
   });
