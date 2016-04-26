@@ -8,34 +8,34 @@ var reviewsController = require('../API_controllers/reviews');
 //get a list of theaters, for results page
 router.get('/results', theatersController.listByDistance);
 //add a theater, makes new theater page
-router.post('/theater', theatersController.theatersCreate);
+router.post('/new-theater', theatersController.theatersCreate);
 //get a specific theater
-router.get('/theater/:theaterid', theatersController.theatersReadOne);
+router.get('/:theaterURL', theatersController.theatersReadOne);
 //update a specific theater
-router.put('/theater/:theaterid', theatersController.theatersUpdateOne);
+router.put('/:theaterURL', theatersController.theatersUpdateOne);
 //delete a specific theater
-router.delete('/theaters/:theaterid', theatersController.theatersDeleteOne);
+router.delete('/:theaterURL', theatersController.theatersDeleteOne);
 
 /*REQUESTS FOR PLAYS*/
 //get a list of plays, for theater page
-router.get('/theater/:theaterid', playsController.listByDate);
+router.get('/:theaterURL', playsController.listByDate);
 //add a play, makes new play page
-router.post('/theater/:theaterid/play', playsController.playsCreate);
+router.post('/:theaterURL/new-play', playsController.playsCreate);
 //get a specific play
-router.get('/theater/:theaterid/play/:playid', playsController.playsReadOne);
+router.get('/:theaterURL/:playURL', playsController.playsReadOne);
 //update a specific play
-router.put('/theater/:theaterid/play/:playid', playsController.playsUpdateOne);
+router.put('/:theaterURL/:playURL', playsController.playsUpdateOne);
 //delete a specific play
-router.delete('/theaters/:theaterid/play/:playid', playsController.playsDeleteOne);
+router.delete('/:theaterURL/:playURL', playsController.playsDeleteOne);
 
 /*REQUESTS FOR REVIEWS*/
 //add a review
-router.post('/theater/:theaterid/play/:playid', reviewsController.reviewsCreate);
+router.post('/:theaterURL/:playURL/new-review', reviewsController.reviewsCreate);
 //get a specific review
-router.get('/theater/:theaterid/play/:playid/review/:reviewid', reviewsController.reviewsReadOne);
+router.get('/:theaterURL/:playURL/:reviewid', reviewsController.reviewsReadOne);
 //update a specific review
-router.put('/theater/:theaterid/play/:playid/review/:reviewid', reviewsController.reviewsUpdateOne);
+router.put('/:theaterURL/:playURL/:reviewid', reviewsController.reviewsUpdateOne);
 //delete a specific review
-router.delete('/theaters/:theaterid/play/:playid/review/:reviewid', reviewsController.reviewsDeleteOne);
+router.delete('/:theaterURL/:playURL/:reviewid', reviewsController.reviewsDeleteOne);
 
 module.exports = router;

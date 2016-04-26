@@ -2,3 +2,8 @@ This folder contains back-end code. Controllers get a request from API_routes an
 
 ## Under Heavy Construction
 No interaction with the front-end right now. Only two GET commands actually constructed, everything else just simple filler.
+
+##To figure out
+- How to update theater's playids when a play is added or removed
+- How to list a bunch of plays by one theater
+- How to delete all the plays of a theater when you delete the theater

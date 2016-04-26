@@ -1,3 +1,11 @@
+var request = require('request');
+var apiOptions = {
+  server : "http://localhost:3000"
+};
+if(process.env.NODE_ENV === 'production') {
+  apiOptions.server = "https://afternoon-taiga-87750.herokuapp.com/";
+}
+
 /* function for rendering 'theater' page, called by app_server/routes/index.js
 go to app_server/views/theater.jade for actual html */
 module.exports.show = function(req, res) {
