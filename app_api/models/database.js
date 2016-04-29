@@ -1,10 +1,10 @@
 //file initiating and checking proper (dis)connection to the mongo database
 var mongoose = require( 'mongoose' );
 var gracefulShutdown;
-var dbURI = 'mongodb://localhost/SeeItHere';
-if(process.env.NODE_ENV === 'production') {
-  dbURI = 'mongodb://heroku_07nmh2w4:81icn2plkq7fljaovrt0bpabct@ds023520.mlab.com:23520/heroku_07nmh2w4';
-}
+//var dbURI = 'mongodb://localhost/SeeItHere';
+//if(process.env.NODE_ENV === 'production') {
+var dbURI = 'mongodb://heroku_07nmh2w4:81icn2plkq7fljaovrt0bpabct@ds023520.mlab.com:23520/heroku_07nmh2w4';
+//}
 mongoose.connect(dbURI);
 
 //Connection Events
