@@ -25,6 +25,7 @@ var buildWithRestrictions = function(req, res, results, stats) {
 
 /*gets list of theaters from database and sends to app_server/controller */
 module.exports.listByDistance = function(req, res) {
+  console.log("hello!");
   var lng = parseFloat(req.query.lng);
   var lat = parseFloat(req.query.lat);
   var dist;

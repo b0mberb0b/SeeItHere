@@ -53,6 +53,7 @@ var _formatDistance = function(distance) {
 /* function for rendering 'results' page, called by app_server/routes/index.js
 go to app_server/views/results.jade for actual html */
 module.exports.listResults = function(req, res) {
+  console.log("hi!");
   var requestOptions, path;
   path = '/api/results';
   requestOptions = {
