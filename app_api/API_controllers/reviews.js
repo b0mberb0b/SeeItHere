@@ -50,7 +50,8 @@ var doAddReview = function(req, res, play) {
     play.reviews.push({
       author: req.body.author,
       text: req.body.text,
-      rating: req.body.rating
+      rating: req.body.rating,
+      playDate: req.body.playDate
     });
     play.save(function(err, play) {
       var thisReview;
@@ -130,6 +131,45 @@ module.exports.reviewsReadOne = function(req, res) {
   } else {
     sendJsonResponse(res, 404, {
       "message": "Not found, theater, play, and review all required"
+    });
+  }
+};
+
+/* gets review by specific theater from database
+and sends to app_server/controller */
+module.exports.reviewsBlankOne = function(req, res) {
+  if(req.params && req.params.theaterURL && req.params.playURL) {
+    Play
+      .findOne({ 'URL': req.params.playURL }).where('theaterURL', req.params.theaterURL)
+      .select('name URL poster dates')
+      .exec(function(err, play) {
+        var data;
+        if(!play) {
+          sendJsonResponse(res, 404, {"message" : "play not found"}
+        );
+        return;
+        } else if (err) {
+          sendJsonResponse(res, 404, err);
+          return;
+        }
+        Theater
+          .findOne({ 'URL' : req.params.theaterURL})
+          .select('name address URL')
+          .exec(function(err, theater) {
+            if (err) {
+              sendJsonResponse(res, 404, err);
+              return;
+            }
+            var data = {
+              theater: theater,
+              play: play
+            }
+            sendJsonResponse(res, 200, data);
+          });
+      });
+  } else {
+    sendJsonResponse(res, 404, {
+      "message": "Not found, theater and play required"
     });
   }
 };

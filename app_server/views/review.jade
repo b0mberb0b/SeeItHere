@@ -2,13 +2,15 @@ extends layout
 
 block content
   .row.page-header
-    .col-lg-9
+    .col-lg-6
       h1= pageHeader.title
     .col-lg-3
-      a.btn.btn-default.pull-right(href="/theater") Go Back Without Saving
+      a.btn.btn-default.pull-right(href="/results/#{theater.URL}/#{play.URL}") Go Back Without Saving
   .row
     .col-xs-12.col-md-8
-      form.form-horizontal(action="/theater", method="get", role="form")
+      form#addReview.form-horizontal(action="", method="post", role="form")
+        -if (error == "val")
+          .alert.alert-danger(role="alert") *All fields are required, thanks!
         .form-group
           label-group
             label.col-xs-2.col-sm-2.control-label(for="name") Your Name
@@ -27,11 +29,16 @@ block content
             label.col-xs-10.col-sm-2.control-label(for="date") Date Attended
             .col-xs-12.col-sm-4
               select.form-control.input-sm(name="date")
-                each date in dates
-                  option #{date}
+                - for (var i = 0; i <= play.dates.length; i++)
+                  option(value=play.dates[i]) #{play.prettyDates[i]}
+                //each date, i in play.prettyDates
+                  //option(value=i) #{date}
         .form-group
           label.col-sm-2.control-label(for="review") Review
           .col-sm-10
             textarea#review.form-control(name="review", rows="5")
         button.btn.btn-default.pull-right Submit Review
     .col-xs-12.col-md-4
+      h3 review #{theater.name}'s
+      h3= play.name
+      img.img-responsive.img-rounded(src= play.poster)

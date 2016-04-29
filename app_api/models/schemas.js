@@ -5,9 +5,9 @@ var mongoose = require( 'mongoose' );
 var reviewSchema = new mongoose.Schema({
     author: {type: String, required: true},
     rating: {type: Number, required: true, min: 0, max: 5},
-    playDate: Date,//{type: Date, required: true},
+    playDate: {type: Date, required: true},
     text: {type: String, required: true},
-    created: Date
+    createdOn: {type: Date, "default": Date.now}
 });
 
 //all the attributes to a "play" object, saved to the database like so
@@ -21,7 +21,9 @@ var playSchema = new mongoose.Schema({
     ticketWebsite: String,
     cast: [String],
     prices: {type: [String], required: true},
-    dates: Date,
+    dates: [Date],
+    startDate: Date,
+    endDate: Date,
     reviews: [reviewSchema]
 });
 

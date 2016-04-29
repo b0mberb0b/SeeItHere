@@ -8,11 +8,9 @@ var sendJsonResponse = function(res, status, content) {
   res.json(content);
 };
 
-/*gets list of plays by specific theater from database
-and sends to app_server/controller */
-module.exports.listByDate = function(req, res) {
-  sendJsonResponse(res, 200, {"status" : "success"});
-};
+
+/* LIST PLAYS is within theaterController.theatersReadOne */
+
 
 /*adds play to database and sends confirmation to app_server/controller */
 module.exports.playsCreate = function(req, res) {
@@ -41,17 +39,29 @@ module.exports.playsReadOne = function(req, res) {
     Play
       .findOne({ 'URL': req.params.playURL }).where('theaterURL', req.params.theaterURL)
       .exec(function(err, play) {
-        console.log(play);
         if(!play) {
           sendJsonResponse(res, 404, {"message" : "play not found"}
-        );
-        return;
-      } else if (err) {
-        sendJsonResponse(res, 404, err);
-        return;
-      }
-      sendJsonResponse(res, 200, play);
-    });
+          );
+          return;
+        } else if (err) {
+          sendJsonResponse(res, 404, err);
+          return;
+        }
+        Theater
+          .findOne({ 'URL' : req.params.theaterURL})
+          .select('name address')
+          .exec(function(err, theater) {
+            if (err) {
+              sendJsonResponse(res, 404, err);
+              return;
+            }
+            var data = {
+              theater: theater,
+              play: play
+            }
+            sendJsonResponse(res, 200, data);
+          });
+      });
   } else {
     sendJsonResponse(res, 404, {
       "message" : "both theater and play needed in request"

@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 //grabs the schema for theater from models/schemas.js and puts it in this variable
 var Theater = mongoose.model('Theater');
+var Play = mongoose.model('Play');
 
 var sendJsonResponse = function(res, status, content) {
   res.status(status);
@@ -16,6 +17,7 @@ var buildWithRestrictions = function(req, res, results, stats) {
     name: doc.obj.name,
     address: doc.obj.address,
     _id: doc.obj._id,
+    URL: doc.obj.URL,
     });
   });
   return theaters;
@@ -60,8 +62,7 @@ module.exports.listByDistance = function(req, res) {
 //gets theater from database and sends to app_server/controller
 module.exports.theatersReadOne = function(req, res) {
   if(req.params && req.params.theaterURL) {
-    Theater
-      .findOne({ URL: req.params.theaterURL })
+    Theater.findOne({ URL: req.params.theaterURL })
       .exec(function(err, theater) {
         if(!theater) {
           sendJsonResponse(res, 404, {"message" : "theater not found"}
@@ -71,7 +72,19 @@ module.exports.theatersReadOne = function(req, res) {
         sendJsonResponse(res, 404, err);
         return;
       }
-      sendJsonResponse(res, 200, theater);
+      Play.find({ 'theaterURL' : req.params.theaterURL})
+        .select('name poster URL startDate endDate')
+        .exec(function(err, plays) {
+          if (err) {
+            sendJsonResponse(res, 400, err);
+            return;
+          }
+          var data = {
+            theater: theater,
+            plays: plays || []
+          }
+          sendJsonResponse(res, 200, data);
+        });
     });
   } else {
     sendJsonResponse(res, 404, {

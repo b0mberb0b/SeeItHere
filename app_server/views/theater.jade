@@ -40,6 +40,7 @@ block content
         .panel-heading
           h2.panel-title Current Season
         .panel-body
-          each play in theater.plays
-            a(href="/theater/play") #{play.name}
+          .error= message
+          each play in plays
+            a(href="/results/#{theater.URL}/#{play.URL}") #{play.name}
             img.img-responsive.img-rounded(src= play.poster)

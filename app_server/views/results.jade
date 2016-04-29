@@ -12,18 +12,19 @@ block content
         .panel-heading
           h2.panel-title Search Results Near You
         .panel-body
+          .error= message
           .row.list-group
-            each location in locations
+            each theater in theaters
               .col-xs.12.list-group-item
                 h4
-                  a(href="/theater")= location.name
+                  a(href="/results/#{theater.URL}")= theater.name
                   small &nbsp;
-                  span.badge.pull-right.badge-default= location.distance
-                p.address= location.address
+                  span.badge.pull-right.badge-default= theater.distance
+                p.address= theater.address
                 p
-                  each showTime in location.showTimes
-                    span.label.label-warning= showTime
-                    | &nbsp;
+                  //each showTime in theater.showTimes
+                    //span.label.label-warning= showTime
+                    //| &nbsp;
     .col-xs-12.col-sm-6
       img.img-responsive.img-rounded(src='http://maps.googleapis.com/maps/api/staticmap?center=51.455041,-0.9690884&zoom=17&size=400x350&sensor=false&markers=51.455041,-0.9690884&scale=2')
     .col-xs-12.col-sm-2
