@@ -1,10 +1,10 @@
 //file initiating and checking proper (dis)connection to the mongo database
 var mongoose = require( 'mongoose' );
 var gracefulShutdown;
-var dbURI = 'mongodb://localhost/SeeItHere';
-if(process.env.NODE_ENV === 'production') {
-  dbURI = process.env.MONGODB_URI;
-}
+//var dbURI = 'mongodb://localhost/SeeItHere';
+//if(process.env.NODE_ENV === 'production') {
+var dbURI = process.env.MONGODB_URI;
+//}
 mongoose.connect(dbURI);
 
 //Connection Events
