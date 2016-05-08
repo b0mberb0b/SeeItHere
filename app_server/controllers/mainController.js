@@ -184,7 +184,8 @@ var renderReviewForm = function(req, res, theater, play) {
     },
     theater: theater,
     play: play,
-    error: req.query.err
+    error: req.query.err,
+    url: req.originalUrl
   });
 };
 

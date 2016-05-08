@@ -17,7 +17,7 @@ To update the database on heroku follow pages 153-155 in book. Here's login Info
 - port = 23520
 - database name = heroku_07nmh2w4
 
-## Construction through chapter 7 of the book
+## Construction through chapter 8 of the book
 
 ##Do this!
 - Always confirm it works locally and on heroku

@@ -8,7 +8,7 @@ block content
       a.btn.btn-default.pull-right(href="/results/#{theater.URL}/#{play.URL}") Go Back Without Saving
   .row
     .col-xs-12.col-md-8
-      form#addReview.form-horizontal(action="", method="post", role="form")
+      form#addReview.form-horizontal(action="#{url}", method="post", role="form")
         -if (error == "val")
           .alert.alert-danger(role="alert") *All fields are required, thanks!
         .form-group
@@ -18,7 +18,7 @@ block content
               input#name.form-control(name="name")
             label.col-xs-10.col-sm-2.control-label(for="rating") Rating
             .col-xs-12.col-sm-2
-              select.form-control.input-sm(name="rating")
+              select#rating.form-control.input-sm(name="rating")
                 option 5
                 option 4
                 option 3
@@ -28,11 +28,9 @@ block content
           label-group
             label.col-xs-10.col-sm-2.control-label(for="date") Date Attended
             .col-xs-12.col-sm-4
-              select.form-control.input-sm(name="date")
+              select#date.form-control.input-sm(name="date")
                 - for (var i = 0; i <= play.dates.length; i++)
                   option(value=play.dates[i]) #{play.prettyDates[i]}
-                //each date, i in play.prettyDates
-                  //option(value=i) #{date}
         .form-group
           label.col-sm-2.control-label(for="review") Review
           .col-sm-10
