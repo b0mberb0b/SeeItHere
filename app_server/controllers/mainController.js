@@ -47,15 +47,18 @@ var getTheaterInfo = function(req, res, callback) {
     requestOptions,
     function(err, response, body) {
       var plays = body.plays;
-      var theater = body.theater;
+      var theaterDude = body.theater;
+      var lng1, lat1;
       if(response.statusCode === 200) {
-        if(theater.cords) {
-          theater.coords = {
+        console.log(theaterDude.coords[0]);
+        if(body.theater.coords) {
+          console.log('inside');
+          theaterDude.coords = {
             lng : body.theater.coords[0],
             lat : body.theater.coords[1]
           };
         };
-        callback(req, res, theater, plays);
+        callback(req, res, theaterDude, plays);
       } else {
         _showError(req, res, response.statusCode);
       }
@@ -82,7 +85,8 @@ var renderTheaterPage = function(req, res, theaterData, playData) {
     },
     theater: theaterData,
     plays: playData,
-    message: message
+    message: message,
+    googleMap: "http://maps.googleapis.com/maps/api/staticmap?center=" + theaterData.coords.lat + "," + theaterData.coords.lng + "&zoom=11&size=400x350&sensor=false&markers=" + theaterData.coords.lat + "," + theaterData.coords.lng + "&scale=2"
   });
 };
 

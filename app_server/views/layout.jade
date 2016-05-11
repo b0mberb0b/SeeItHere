@@ -11,7 +11,7 @@ html(ng-app='seeItHereApp')
     link(rel='stylesheet', href='/stylesheets/style.css')
     link(rel='icon', href='/images/favicon.ico')
   body
-    .navbar.navbar-default.navbar-fixed-top
+    .navbar.navbar-default.navbar-fixed-top.navbar-inner
       .container
         .navbar-header
           button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navbar', aria-expanded='false', aria-controls='navbar')
@@ -38,3 +38,4 @@ script(src='/angular/seeItHereApp.js')
 script(src='/javascripts/jquery-1.12.0.min.js')
 script(src='/bootstrap/js/bootstrap.min.js')
 script(src='/javascripts/validation.js')
+script(src='https://maps.googleapis.com/maps/api/js?callback=initMap')

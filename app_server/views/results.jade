@@ -22,19 +22,49 @@ block content
               h4
                 a(href="/results/{{ theater.URL }}") {{ theater.name }}
                 small &nbsp;
-                small(rating-stars, rating="theater.rating")
+                //small(rating-stars, rating="theater.rating")
                 span.badge.pull-right.badge-default {{ theater.distance | formatDistance }}
               p.address {{ theater.address }}
               p
-    .col-xs-12.col-sm-6
-      img.img-responsive.img-rounded(src='http://maps.googleapis.com/maps/api/staticmap?center=51.455041,-0.9690884&zoom=17&size=400x350&sensor=false&markers=51.455041,-0.9690884&scale=2')
-    .col-xs-12.col-sm-2
-      .panel.panel-primary
-        .panel-heading
-          h2.panel-title Limit Results
-        .panel-body
-          .row
-            .col-xs-12
-              p Limit Ticket Price
-              p Limit Date
-              p Limit Distance
+    .col-xs-12.col-sm-6#map
+    script.
+      function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: -34.397, lng: 150.644},
+          zoom: 12
+        });
+        var infoWindow = new google.maps.InfoWindow({map: map});
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+
+            infoWindow.setPosition(pos);
+            infoWindow.setContent('You are Here!');
+            map.setCenter(pos);
+          }, function() {
+            handleLocationError(true, infoWindow, map.getCenter());
+          });
+        } else {
+          handleLocationError(false, infoWindow, map.getCenter());
+        }
+        }
+
+        function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+        infoWindow.setPosition(pos);
+        infoWindow.setContent(browserHasGeolocation ?
+                              'Error: The Geolocation service failed.' :
+                              'Error: Your browser doesn\'t support geolocation.');
+        }
+    //.col-xs-12.col-sm-2
+      //.panel.panel-primary
+        //.panel-heading
+          //h2.panel-title Limit Results
+        //.panel-body
+          //.row
+            //.col-xs-12
+              //p Limit Ticket Price
+              //p Limit Date
+              //p Limit Distance

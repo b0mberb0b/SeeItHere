@@ -1110,6 +1110,18 @@ a:focus {
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
+a.searchImage {
+  background-image: url('searchImage.png');
+}
+
+a.searchImage: hover {
+  background-image: url('searchImageHover.png');
+  background-color: pink;
+}
+
+a.searchImage: active {
+  background-image: url('searchImageClicked.png');
+}
 figure {
   margin: 0;
 }

@@ -10,6 +10,14 @@ body {
 
 #filter {margin-left: 4px;}
 
+.emptyShell {
+  height: 200px;
+}
+
+#map {
+  width: 700px;
+  height: 600px;
+}
 .footer {
   position: absolute;
   bottom: 0;
