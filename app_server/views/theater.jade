@@ -1,0 +1,46 @@
+extends layout
+
+include _includes/sharedHTMLfunctions
+
+block content
+  .row.page-header
+    .col-lg-9
+      h1= pageHeader.title
+      h3= pageHeader.strapline
+    .col-lg-3
+      a.btn.btn-default.pull-right(href="/results") Back to Search
+  .row
+    .col-xs-12.col-md-9
+      .row
+        .col-xs-12.col-sm-6
+          p.rating
+            +outputRating(theater.rating)
+          p= theater.address
+          .panel.panel-primary
+            .panel-heading
+              h2.panel-title Theater Description
+            .panel-body
+              p= theater.description
+          .panel.panel-primary
+            .panel-heading
+              a.panel-title(href= theater.website) Theater Website
+        .col-xs-12.col-sm-6.location-map
+          .panel.panel-primary
+            .panel-heading
+              h2.panel-title Location Map
+            .panel-body
+              img.img-responsive.img-rounded(src= googleMap)
+          //.panel.panel-primary
+            //.panel-heading
+              //h2.panel-title Season Calendar
+            //.panel-body
+              //img.img-responsive.img-rounded(src='http://www.tondering.dk/claus/cal/calpic/calendar_icon.png')
+    .col-xs-12.col-md-3
+      panel.panel-primary
+        .panel-heading
+          h2.panel-title Current Season
+        .panel-body
+          .error= message
+          each play in plays
+            a(href="/results/#{theater.URL}/#{play.URL}") #{play.name}
+            img.img-responsive.img-rounded(src= play.poster)

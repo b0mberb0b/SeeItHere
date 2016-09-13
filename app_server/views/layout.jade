@@ -1,0 +1,41 @@
+doctype html
+html(ng-app='seeItHereApp')
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scaled=1.0')
+    meta(name='description', content='SeeItHere Theater App helps you find the productions you want to see')
+    meta(name='author', content='Rainier Reindeer')
+    title= title
+    link(rel='stylesheet', href='/bootstrap/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='icon', href='/images/favicon.ico')
+  body
+    .navbar.navbar-default.navbar-fixed-top.navbar-inner
+      .container
+        .navbar-header
+          button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navbar', aria-expanded='false', aria-controls='navbar')
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand(href='/') SeeItHere
+        #navbar.collapse.navbar-collapse
+          ul.nav.navbar-nav
+            li
+              a(href='/about') About
+            li
+              a(href='/terms') Terms
+            li
+              a(href='/FAQ') FAQs
+    .container
+      block content
+    footer.footer
+      .container
+        .col-xs-12
+          small &copy; Rainier Reindeer 2016
+script(src='/angular/angular.min.js')
+script(src='/angular/seeItHereApp.js')
+script(src='/javascripts/jquery-1.12.0.min.js')
+script(src='/bootstrap/js/bootstrap.min.js')
+script(src='/javascripts/validation.js')
+script(src='https://maps.googleapis.com/maps/api/js?callback=initMap')

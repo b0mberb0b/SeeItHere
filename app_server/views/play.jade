@@ -1,0 +1,64 @@
+extends layout
+
+include _includes/sharedHTMLfunctions
+
+block content
+  .row.page-header
+    .col-lg-9
+      h1= pageHeader.title
+      h3= pageHeader.strapline
+    .col-lg-3
+      a.btn.btn-default.pull-right(href="/results/#{play.theaterURL}") Back to Theater
+  .row
+    .col-xs-12.col-sm-6
+      .row
+        p.rating
+          +outputRating(play.rating)
+        p= theater.name + ", " + theater.address
+        .panel.panel-primary
+          .panel-heading
+            h2.panel-title Production Description
+          .panel-body
+            p= play.description
+        .panel.panel-primary
+          .panel-heading
+            h2.panel-title Cast and Crew
+          .panel-body
+            each member in play.cast
+              p= member
+    .col-xs-12.col-sm-4
+      img.img-responsive.img-rounded(src= play.poster)
+      .panel.panel-primary
+        .panel-heading
+          a.panel-title(href= play.ticketWebsite) Buy Tickets
+    .col-xs-12.col-sm-2
+      .panel.panel-primary
+        .panel-heading
+          h2.panel-title Ticket Prices
+        .panel-body
+          each price in play.prices
+            p= price
+      .panel-primary
+        .panel-heading
+          h2.panel-title Dates and times
+        .panel-body
+          each date in play.prettyDates
+            p= date
+  .row
+    .panel.panel-primary
+      .panel-heading
+        a.btn.btn-default.pull-right(href="/results/#{play.theaterURL}/#{play.URL}/new-review") Write Review
+        h2.panel-title Play Reviews
+      .panel-body.review-container
+        each review in play.reviews
+          .row
+            .review
+              .well.well-sm.review-header
+                span.rating
+                  +outputRating(review.rating)
+                span.reviewAuthor #{review.author}
+                small.reviewTimestamp Saw the
+                  +formatDate(review.playDate)
+                  span  production
+              .col-xs-12
+                p !{(review.text).replace(/\n/g, '<br/>')}

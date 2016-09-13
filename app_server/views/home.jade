@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  h1.center= pageHeader.title
+    p
+    small.center #{pageHeader.strapline}
+    p
+    p
+    .row.emptyShell
+    .row
+      .col-sm-2
+      .col-sm-5
+        a.btn.btn-default.pull-right.bigWords(href="/results") Theaters Near You
+      .col-sm-3
