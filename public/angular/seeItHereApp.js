@@ -75,7 +75,7 @@ var resultsData = function ($http) {
   return {
     locationByCoords : locationByCoords
   };
-};
+}; 
 
 /* Uses HTML 5's geolocation API to get the user's location */
 var geolocation = function () {

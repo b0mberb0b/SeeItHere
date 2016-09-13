@@ -148,6 +148,15 @@ module.exports.makeReview = function(req, res) {
   });
 };
 
+module.exports.makeTheater = function(req, res) {
+  res.render('newTheater', {
+    title: "Create theater Page",
+    pageHeader: {
+      title: "Create a Theater Page",
+      strapline: "Put Your Theater on SeeItHere"
+    }
+};
+
 /* Makes a request to the API Review controller for info to make a review */
 var getReviewInfo = function(req, res, callback) {
   var requestOptions, path;
